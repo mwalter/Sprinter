@@ -35,4 +35,12 @@ describe('AppComponent', () => {
     expect(component.members.size).toBe(2);
   });
 
+  it('should calculate availability when method addMember() is called', () => {
+    component.addMember(8);
+
+    expect(component.workingDaysInSprint).toBe(10);
+    expect(component.teamAvailability).toBe(8);
+    expect(component.diff).toBe(component.teamAvailability / component.workingDaysInSprint);
+  });
+
 });
