@@ -5,10 +5,10 @@ name: Node.js CI
 
 on:
   push:
-    branches: 
+    branches:
       - 'feature/**'
   pull_request:
-    branches: 
+    branches:
       - develop
 
 jobs:
@@ -18,7 +18,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [10.x, 12.x]
+        node-version: [12.x]
 
     steps:
     - uses: actions/checkout@v2
@@ -28,4 +28,4 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: npm ci
     - run: npm run build --if-present
-    - run: npm test
+    - run: CI=true npm test
