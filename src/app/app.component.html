@@ -1,0 +1,75 @@
+<div class="container">
+  <!-- Jumbotron -->
+  <div class="jumbotron mt-4">
+    <div class="media">
+      <img src="../assets/running.png" class="align-self-start mr-3" width="100" height="100" alt="Sprinter">
+      <div class="media-body">
+        <h1>Sprinter</h1>
+        <p class="lead">Calculate the availability of your agile team.</p>
+        <span class="badge badge-secondary">v {{ appVersion }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row row-cols-1 row-cols-sm-12 mb-2">
+    <div class="col-sm-8">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Sprint</h4>
+
+          <div class="form-row">
+            <div class="col-4">
+              <label for="sprintLength">Sprint Length [weeks]</label>
+            </div>
+            <div class="col-1">
+              <input type="number" class="form-control" id="sprintLength" [(ngModel)]="sprintLength" disabled>
+            </div>
+            <div class="col-5">
+              <input type="range" class="custom-range" min="1" max="5" [(ngModel)]="sprintLength" (change)="calculate()">
+            </div>
+          </div>
+
+          <form [formGroup]="form">
+            <div class="form-row mt-2">
+              <div class="col-4">
+                <label for="spareTime">Spare-time Work</label>
+              </div>
+              <div class="col-6">
+                <div class="input-group">
+                  <input type="number" class="form-control" id="spareTime" formControlName="spareTime" (change)="calculate()">
+                  <div class="input-group-append">
+                    <span class="input-group-text" id="basic-addon2">%</span>
+                  </div>
+                </div>
+                <div *ngIf="spareTime.invalid && (spareTime.dirty || spareTime.touched)" class="alert alert-danger">
+                  <div *ngIf="spareTime.errors.min">Minimum is 0 %.</div>
+                  <div *ngIf="spareTime.errors.max">Maximum is 100 %.</div>
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="col-4">&nbsp;</div>
+              <div class="col-6"><small class="form-text text-muted">E.g. amount of teams' availability consumed by sprint meetings (Dailies, Plannings, Review etc.)</small></div>
+            </div>
+          </form>
+
+          <app-member-add [sprintLength]="sprintLength" (add)="addMember($event)" (clear)="resetSprint()"></app-member-add>
+
+          <app-member-list [members]="members" (remove)="removeMember($event)"></app-member-list>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="card text-white bg-primary">
+        <div class="card-body">
+          <h4 class="card-title">Availability</h4>
+          <h3 *ngIf="members.size === 0">No team - no fun.</h3>
+          <h3 *ngIf="members.size > 0">{{ teamAvailability.toPrecision(3) }} / {{ workingDaysInSprint }} ({{ diff | percent:'1.1-2'}})</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
