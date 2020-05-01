@@ -1,5 +1,4 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-
 import {MemberAddComponent} from './member-add.component';
 
 describe('MemberAddComponent', () => {
