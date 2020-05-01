@@ -1,7 +1,10 @@
-import { TestBed, async } from '@angular/core/testing';
-import { AppComponent } from './app.component';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {AppComponent} from './app.component';
 
 describe('AppComponent', () => {
+  let component: AppComponent;
+  let fixture: ComponentFixture<AppComponent>;
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
@@ -10,22 +13,26 @@ describe('AppComponent', () => {
     }).compileComponents();
   }));
 
+  beforeEach(() => {
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
   it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
+    expect(component).toBeTruthy();
   });
 
   it(`should have as title 'Sprinter'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('Sprinter');
+    expect(component.title).toEqual('Sprinter');
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('Sprinter app is running!');
+  it('should add to map when method addMember() is called', () => {
+    expect(component.members.size).toBe(0);
+
+    component.addMember(8);
+    component.addMember(7);
+    expect(component.members.size).toBe(2);
   });
+
 });
