@@ -15,10 +15,7 @@ describe('MemberListComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(MemberListComponent);
     component = fixture.componentInstance;
-    const members = new Map<string, number>();
-    members.set('123', 8);
-    members.set('456', 9);
-    component.members = members;
+    component.members = createMembersMap();
     fixture.detectChanges();
   });
 
@@ -37,5 +34,12 @@ describe('MemberListComponent', () => {
     expect(component.getIndex('123')).toBe(0);
     expect(component.getIndex('456')).toBe(1);
   });
+
+  function createMembersMap() {
+    const members = new Map<string, number>();
+    members.set('123', 8);
+    members.set('456', 9);
+    return members;
+  }
 
 });
