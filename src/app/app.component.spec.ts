@@ -35,12 +35,35 @@ describe('AppComponent', () => {
     expect(component.members.size).toBe(2);
   });
 
+  it('should remove from map when method removeMember() is called', () => {
+    component.addMember(8);
+    component.addMember(7);
+    expect(component.members.size).toBe(2);
+
+    const keys = component.members.keys();
+    const key = keys.next();
+    component.removeMember(key.value);
+    expect(component.members.size).toBe(1);
+    expect(component.members.get(key.value)).toBeUndefined();
+  });
+
   it('should calculate availability when method addMember() is called', () => {
     component.addMember(8);
 
     expect(component.workingDaysInSprint).toBe(10);
     expect(component.teamAvailability).toBe(8);
     expect(component.diff).toBe(component.teamAvailability / component.workingDaysInSprint);
+  });
+
+  it('should reset some fields when method resetSprint() is called', () => {
+    component.spareTime.setValue(15);
+    component.addMember(8);
+    expect(component.spareTime.value).toBe(15);
+    expect(component.members.size).toBe(1);
+
+    component.resetSprint();
+    expect(component.spareTime.value).toBe(0);
+    expect(component.members.size).toBe(0);
   });
 
 });
