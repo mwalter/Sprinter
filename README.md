@@ -1,5 +1,8 @@
 # Sprinter
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+![Node.js CI](https://github.com/mwalter/Sprinter/workflows/Node.js%20CI/badge.svg?branch=develop)
+
 Sprinter is a tool to help agile teams calculating their availability.
 
 ## Prerequisites
