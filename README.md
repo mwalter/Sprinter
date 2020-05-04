@@ -30,6 +30,8 @@ The calculated availability is shown in the blue area on the right. There are th
 You can remove team members from the list by clicking the Remove button next to a team member.<br/>
 To reset the form you have to click the Reset button.
 
+A live demo of Sprinter can be found [here](https://sprinter.newinstance.ch/).
+
 ## Technology
 
 The app is based on [Angular](http://angular.io) and [Bootstrap](https://getbootstrap.com/) UI components.
