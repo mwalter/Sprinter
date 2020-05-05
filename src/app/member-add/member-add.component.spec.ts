@@ -1,4 +1,5 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {SimpleChange} from '@angular/core';
 import {MemberAddComponent} from './member-add.component';
 
 describe('MemberAddComponent', () => {
@@ -49,4 +50,16 @@ describe('MemberAddComponent', () => {
     component.clearSprint();
     expect(component.clear.emit).toHaveBeenCalled();
   });
+
+  it('should change max availability value when sprint length has changed', () => {
+    expect(component.max).toBe(10); // default 2 weeks
+
+    component.sprintLength = 3;
+    component.ngOnChanges({
+      sprintLength: new SimpleChange(null, 'sprintLength', null)
+    });
+    fixture.detectChanges();
+    expect(component.max).toBe(15);
+  });
+
 });
