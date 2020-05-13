@@ -11,6 +11,7 @@ import {faEraser, faPlus} from '@fortawesome/free-solid-svg-icons';
 export class MemberAddComponent implements OnInit, OnChanges {
 
   @Input() sprintLength;
+  @Input() holidays;
   @Output() add = new EventEmitter<number>();
   @Output() clear = new EventEmitter();
 
@@ -54,7 +55,7 @@ export class MemberAddComponent implements OnInit, OnChanges {
       availability: new FormControl('', [
         Validators.required,
         Validators.min(1),
-        Validators.max(this.max)
+        Validators.max(this.max - this.holidays)
       ])
     });
   }

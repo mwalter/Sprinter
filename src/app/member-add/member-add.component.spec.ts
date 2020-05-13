@@ -38,6 +38,11 @@ describe('MemberAddComponent', () => {
 
   it('should not raise add event when method addMember() is called with invalid availability', () => {
     spyOn(component.add, 'emit');
+    component.holidays = 0;
+    component.ngOnChanges({
+      sprintLength: new SimpleChange(null, 'holidays', null)
+    });
+    fixture.detectChanges();
     component.form.controls.availability.setValue(17);
 
     component.addMember();
@@ -62,4 +67,29 @@ describe('MemberAddComponent', () => {
     expect(component.max).toBe(15);
   });
 
+  it('should raise add event when method addMember() is called with valid availability and holidays', () => {
+    spyOn(component.add, 'emit');
+    component.holidays = 3;
+    component.ngOnChanges({
+      holidays: new SimpleChange(null, 'holidays', null)
+    });
+    fixture.detectChanges();
+    component.form.controls.availability.setValue(7);
+
+    component.addMember();
+    expect(component.add.emit).toHaveBeenCalled();
+  });
+
+  it('should not raise add event when method addMember() is called with invalid availability and holidays', () => {
+    spyOn(component.add, 'emit');
+    component.holidays = 5;
+    component.ngOnChanges({
+      holidays: new SimpleChange(null, 'holidays', null)
+    });
+    fixture.detectChanges();
+    component.form.controls.availability.setValue(9);
+
+    component.addMember();
+    expect(component.add.emit).not.toHaveBeenCalled();
+  });
 });

@@ -66,4 +66,12 @@ describe('AppComponent', () => {
     expect(component.members.size).toBe(0);
   });
 
+  it('should subtract holidays when holidays is > 0', () => {
+    component.form.controls.holidays.setValue(2);
+    component.addMember(6);
+
+    expect(component.workingDaysInSprint).toBe(8);
+    expect(component.teamAvailability).toBe(6);
+    expect(component.diff).toBe(component.teamAvailability / component.workingDaysInSprint);
+  });
 });
