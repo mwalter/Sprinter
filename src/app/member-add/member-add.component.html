@@ -8,7 +8,7 @@
       <div *ngIf="availability.invalid && (availability.dirty || availability.touched)" class="alert alert-danger">
         <div *ngIf="availability.errors.required">Value is required.</div>
         <div *ngIf="availability.errors.min">Minimum is 1.</div>
-        <div *ngIf="availability.errors.max">Maximum is {{ sprintLength * 5 }}.</div>
+        <div *ngIf="availability.errors.max">Maximum is {{ sprintLength * 5 - holidays }}.</div>
       </div>
     </div>
     <div class="col-2">

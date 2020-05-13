@@ -20,17 +20,14 @@ export class AppComponent implements OnInit {
 
   members = new Map<string, number>();
 
+  max: number;
+
   teamAvailability = 0;
   workingDaysInSprint = 0;
   diff = 0;
 
   ngOnInit(): void {
-    this.form = new FormGroup({
-      spareTime: new FormControl(0, [
-        Validators.min(0),
-        Validators.max(100)
-      ])
-    });
+    this.setupValidation();
   }
 
   addMember(availability: number): void {
@@ -40,6 +37,18 @@ export class AppComponent implements OnInit {
 
   removeMember(key: string): void {
     this.members.delete(key);
+    this.calculate();
+  }
+
+  resetValidatorsAndCalculate() {
+    this.max = this.sprintLength * 5;
+
+    this.form.controls.holidays.setValidators([
+      Validators.required,
+      Validators.min(0),
+      Validators.max(this.max)
+    ]);
+    this.form.controls.holidays.updateValueAndValidity();
     this.calculate();
   }
 
@@ -57,7 +66,8 @@ export class AppComponent implements OnInit {
     this.teamAvailability = result;
 
     const workingDays = this.sprintLength * 5; // working 5 days a week
-    const totalWorkingDays = workingDays * this.members.size;
+    const holidays = this.form.controls.holidays.value;
+    const totalWorkingDays = (workingDays - holidays) * this.members.size;
 
     this.workingDaysInSprint = totalWorkingDays;
     this.diff = this.teamAvailability / totalWorkingDays;
@@ -73,4 +83,25 @@ export class AppComponent implements OnInit {
   get spareTime() {
     return this.form.get('spareTime');
   }
+
+  get holidays() {
+    return this.form.get('holidays');
+  }
+
+  private setupValidation(): void {
+    this.max = this.sprintLength * 5;
+
+    this.form = new FormGroup({
+      spareTime: new FormControl(0, [
+        Validators.min(0),
+        Validators.max(100)
+      ]),
+      holidays: new FormControl(0, [
+        Validators.required,
+        Validators.min(0),
+        Validators.max(this.max)
+      ])
+    });
+  }
+
 }
