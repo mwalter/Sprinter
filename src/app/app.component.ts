@@ -76,6 +76,7 @@ export class AppComponent implements OnInit {
   resetSprint(): void {
     this.sprintLength = 2;
     this.form.controls.spareTime.setValue(0);
+    this.form.controls.holidays.setValue(0);
     this.members.clear();
     this.calculate();
   }
