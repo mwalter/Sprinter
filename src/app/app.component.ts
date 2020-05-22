@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
 
   teamAvailability = 0;
   workingDaysInSprint = 0;
-  diff = 0;
+  ratio = 0;
 
   ngOnInit(): void {
     this.setupValidation();
@@ -70,7 +70,7 @@ export class AppComponent implements OnInit {
     const totalWorkingDays = (workingDays - holidays) * this.members.size;
 
     this.workingDaysInSprint = totalWorkingDays;
-    this.diff = this.teamAvailability / totalWorkingDays;
+    this.ratio = this.teamAvailability / totalWorkingDays;
   }
 
   resetSprint(): void {

@@ -45,6 +45,7 @@ export class MemberAddComponent implements OnInit, OnChanges {
   }
 
   clearSprint(): void {
+    this.form.reset();
     this.clear.emit();
   }
 

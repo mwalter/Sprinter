@@ -52,7 +52,7 @@ describe('AppComponent', () => {
 
     expect(component.workingDaysInSprint).toBe(10);
     expect(component.teamAvailability).toBe(8);
-    expect(component.diff).toBe(component.teamAvailability / component.workingDaysInSprint);
+    expect(component.ratio).toBe(component.teamAvailability / component.workingDaysInSprint);
   });
 
   it('should reset all fields when method resetSprint() is called', () => {
@@ -78,6 +78,6 @@ describe('AppComponent', () => {
 
     expect(component.workingDaysInSprint).toBe(8);
     expect(component.teamAvailability).toBe(6);
-    expect(component.diff).toBe(component.teamAvailability / component.workingDaysInSprint);
+    expect(component.ratio).toBe(component.teamAvailability / component.workingDaysInSprint);
   });
 });
