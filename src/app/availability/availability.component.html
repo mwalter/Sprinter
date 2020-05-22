@@ -1,0 +1,7 @@
+<div class="card text-white bg-primary">
+  <div class="card-body">
+    <h4 class="card-title">Availability</h4>
+    <h3 *ngIf="members.size === 0">No team - no fun.</h3>
+    <h3 *ngIf="members.size > 0">{{ teamAvailability.toPrecision(3) }} / {{ workingDaysInSprint }} ({{ ratio | percent:'1.1-2'}})</h3>
+  </div>
+</div>
