@@ -53,6 +53,7 @@ describe('MemberAddComponent', () => {
     spyOn(component.clear, 'emit');
 
     component.clearSprint();
+    expect(component.form.controls.availability.value).toBe(null);
     expect(component.clear.emit).toHaveBeenCalled();
   });
 

@@ -52,17 +52,23 @@ describe('AppComponent', () => {
 
     expect(component.workingDaysInSprint).toBe(10);
     expect(component.teamAvailability).toBe(8);
-    expect(component.diff).toBe(component.teamAvailability / component.workingDaysInSprint);
+    expect(component.ratio).toBe(component.teamAvailability / component.workingDaysInSprint);
   });
 
-  it('should reset some fields when method resetSprint() is called', () => {
+  it('should reset all fields when method resetSprint() is called', () => {
+    component.sprintLength = 4;
     component.spareTime.setValue(15);
+    component.holidays.setValue(2);
     component.addMember(8);
+    expect(component.sprintLength).toBe(4);
     expect(component.spareTime.value).toBe(15);
+    expect(component.holidays.value).toBe(2);
     expect(component.members.size).toBe(1);
 
     component.resetSprint();
+    expect(component.sprintLength).toBe(2);
     expect(component.spareTime.value).toBe(0);
+    expect(component.holidays.value).toBe(0);
     expect(component.members.size).toBe(0);
   });
 
@@ -72,6 +78,6 @@ describe('AppComponent', () => {
 
     expect(component.workingDaysInSprint).toBe(8);
     expect(component.teamAvailability).toBe(6);
-    expect(component.diff).toBe(component.teamAvailability / component.workingDaysInSprint);
+    expect(component.ratio).toBe(component.teamAvailability / component.workingDaysInSprint);
   });
 });
