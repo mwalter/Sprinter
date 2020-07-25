@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 
-import {faMinus} from '@fortawesome/free-solid-svg-icons';
+import {faUserMinus} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-member-list',
@@ -12,7 +12,7 @@ export class MemberListComponent {
   @Input() members: Map<string, number>;
   @Output() remove = new EventEmitter<string>();
 
-  faMinus = faMinus;
+  faUserMinus = faUserMinus;
 
   removeMember(memberKey: string): void {
     this.remove.emit(memberKey);

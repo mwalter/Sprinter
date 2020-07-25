@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 
-import {faEraser, faPlus} from '@fortawesome/free-solid-svg-icons';
+import {faUserPlus} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-member-add',
@@ -10,13 +10,11 @@ import {faEraser, faPlus} from '@fortawesome/free-solid-svg-icons';
 })
 export class MemberAddComponent implements OnInit, OnChanges {
 
-  @Input() sprintLength;
-  @Input() holidays;
+  @Input() sprintLength: number;
+  @Input() holidays: number;
   @Output() add = new EventEmitter<number>();
-  @Output() clear = new EventEmitter();
 
-  faEraser = faEraser;
-  faPlus = faPlus;
+  faUserPlus = faUserPlus;
 
   max: number;
 
@@ -44,9 +42,8 @@ export class MemberAddComponent implements OnInit, OnChanges {
     }
   }
 
-  clearSprint(): void {
+  resetForm(): void {
     this.form.reset();
-    this.clear.emit();
   }
 
   private setupValidation(): void {
