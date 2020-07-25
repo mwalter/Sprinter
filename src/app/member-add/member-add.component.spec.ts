@@ -1,6 +1,7 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {SimpleChange} from '@angular/core';
 import {MemberAddComponent} from './member-add.component';
+import {ReactiveFormsModule} from '@angular/forms';
 import {FaIconComponent} from '@fortawesome/angular-fontawesome';
 
 describe('MemberAddComponent', () => {
@@ -9,7 +10,8 @@ describe('MemberAddComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [MemberAddComponent, FaIconComponent]
+      declarations: [MemberAddComponent, FaIconComponent],
+      imports: [ReactiveFormsModule]
     })
       .compileComponents();
   }));
@@ -48,14 +50,6 @@ describe('MemberAddComponent', () => {
 
     component.addMember();
     expect(component.add.emit).not.toHaveBeenCalled();
-  });
-
-  it('should raise clear event when method clearSprint() is called', () => {
-    spyOn(component.clear, 'emit');
-
-    component.clearSprint();
-    expect(component.form.controls.availability.value).toBe(null);
-    expect(component.clear.emit).toHaveBeenCalled();
   });
 
   it('should change max availability value when sprint length has changed', () => {

@@ -1,7 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {environment} from '../environments/environment';
 import {v4 as uuid} from 'uuid';
+import {MemberAddComponent} from './member-add/member-add.component';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +10,8 @@ import {v4 as uuid} from 'uuid';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+
+  @ViewChild(MemberAddComponent) memberAddComponent: MemberAddComponent;
 
   title = 'Sprinter';
 
@@ -74,6 +77,7 @@ export class AppComponent implements OnInit {
   }
 
   resetSprint(): void {
+    this.memberAddComponent.resetForm();
     this.sprintLength = 2;
     this.form.controls.spareTime.setValue(0);
     this.form.controls.holidays.setValue(0);

@@ -1,4 +1,6 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, Output, EventEmitter} from '@angular/core';
+
+import {faTrashAlt} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-availability',
@@ -11,5 +13,11 @@ export class AvailabilityComponent {
   @Input() teamAvailability: number;
   @Input() workingDaysInSprint: number;
   @Input() ratio: number;
+  @Output() reset = new EventEmitter();
 
+  faTrashAlt = faTrashAlt;
+
+  resetAll(): void {
+    this.reset.emit();
+  }
 }

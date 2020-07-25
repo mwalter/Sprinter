@@ -71,7 +71,7 @@
             </div>
           </form>
 
-          <app-member-add [sprintLength]="sprintLength" [holidays]="holidays.value" (add)="addMember($event)" (clear)="resetSprint()"></app-member-add>
+          <app-member-add [sprintLength]="sprintLength" [holidays]="holidays.value" (add)="addMember($event)"></app-member-add>
 
           <app-member-list [members]="members" (remove)="removeMember($event)"></app-member-list>
 
@@ -80,7 +80,7 @@
     </div>
 
     <div class="col-sm-4">
-      <app-availability [members]="members" [teamAvailability]="teamAvailability" [workingDaysInSprint]="workingDaysInSprint" [ratio]="ratio"></app-availability>
+      <app-availability [members]="members" [teamAvailability]="teamAvailability" [workingDaysInSprint]="workingDaysInSprint" [ratio]="ratio" (reset)="resetSprint()"></app-availability>
     </div>
   </div>
 

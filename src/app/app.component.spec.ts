@@ -3,8 +3,8 @@ import {AppComponent} from './app.component';
 import {AvailabilityComponent} from './availability/availability.component'; 
 import {MemberAddComponent} from './member-add/member-add.component';
 import {MemberListComponent} from './member-list/member-list.component';
-import {FaIconComponent} from '@fortawesome/angular-fontawesome';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 
 describe('AppComponent', () => {
   let component: AppComponent;
@@ -13,9 +13,9 @@ describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        AppComponent, AvailabilityComponent, MemberAddComponent, MemberListComponent, FaIconComponent
+        AppComponent, AvailabilityComponent, MemberAddComponent, MemberListComponent
       ],
-      imports: [FormsModule, ReactiveFormsModule]
+      imports: [FormsModule, ReactiveFormsModule, FontAwesomeModule]
     }).compileComponents();
   }));
 

@@ -1,5 +1,6 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {AvailabilityComponent} from './availability.component';
+import {FaIconComponent} from '@fortawesome/angular-fontawesome';
 
 describe('AvailabilityComponent', () => {
   let component: AvailabilityComponent;
@@ -7,9 +8,7 @@ describe('AvailabilityComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        AvailabilityComponent
-      ]
+      declarations: [AvailabilityComponent, FaIconComponent],
     })
       .compileComponents();
   }));
@@ -33,6 +32,13 @@ describe('AvailabilityComponent', () => {
     expect(h3.textContent).toContain('17');
     expect(h3.textContent).toContain('20');
     expect(h3.textContent).toContain('85.0%');
+  });
+
+  it('should raise reset event when method resetAll() is called', () => {
+    spyOn(component.reset, 'emit');
+
+    component.resetAll();
+    expect(component.reset.emit).toHaveBeenCalled();
   });
 
   function createMembersMap() {
