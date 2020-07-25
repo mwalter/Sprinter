@@ -5,13 +5,14 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 
 import {AppComponent} from './app.component';
+import {AvailabilityComponent} from './availability/availability.component';
 import {MemberAddComponent} from './member-add/member-add.component';
 import {MemberListComponent} from './member-list/member-list.component';
-
 
 @NgModule({
   declarations: [
     AppComponent,
+    AvailabilityComponent,
     MemberAddComponent,
     MemberListComponent
   ],

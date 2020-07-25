@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 import {faEraser, faPlus} from '@fortawesome/free-solid-svg-icons';
@@ -8,9 +8,10 @@ import {faEraser, faPlus} from '@fortawesome/free-solid-svg-icons';
   templateUrl: './member-add.component.html',
   styleUrls: ['./member-add.component.css']
 })
-export class MemberAddComponent implements OnInit {
+export class MemberAddComponent implements OnInit, OnChanges {
 
   @Input() sprintLength;
+  @Input() holidays;
   @Output() add = new EventEmitter<number>();
   @Output() clear = new EventEmitter();
 
@@ -22,15 +23,11 @@ export class MemberAddComponent implements OnInit {
   form: FormGroup;
 
   ngOnInit(): void {
-    this.max = this.sprintLength * 5;
+    this.setupValidation();
+  }
 
-    this.form = new FormGroup({
-      availability: new FormControl('', [
-        Validators.required,
-        Validators.min(1),
-        Validators.max(this.max)
-      ])
-    });
+  ngOnChanges(changes: SimpleChanges): void {
+    this.setupValidation();
   }
 
   get availability() {
@@ -47,7 +44,20 @@ export class MemberAddComponent implements OnInit {
     }
   }
 
-  clearSprint() {
+  clearSprint(): void {
+    this.form.reset();
     this.clear.emit();
+  }
+
+  private setupValidation(): void {
+    this.max = this.sprintLength * 5;
+
+    this.form = new FormGroup({
+      availability: new FormControl('', [
+        Validators.required,
+        Validators.min(1),
+        Validators.max(this.max - this.holidays)
+      ])
+    });
   }
 }
