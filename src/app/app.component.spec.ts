@@ -1,5 +1,8 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {AppComponent} from './app.component';
+import {MemberAddComponent} from './member-add/member-add.component';
+import {MemberListComponent} from './member-list/member-list.component';
+import {FaIconComponent} from '@fortawesome/angular-fontawesome';
 
 describe('AppComponent', () => {
   let component: AppComponent;
@@ -8,7 +11,7 @@ describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        AppComponent
+        AppComponent, MemberAddComponent, MemberListComponent, FaIconComponent
       ],
     }).compileComponents();
   }));
