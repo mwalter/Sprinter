@@ -1,6 +1,7 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {SimpleChange} from '@angular/core';
 import {MemberAddComponent} from './member-add.component';
+import {FaIconComponent} from '@fortawesome/angular-fontawesome';
 
 describe('MemberAddComponent', () => {
   let component: MemberAddComponent;
@@ -8,7 +9,7 @@ describe('MemberAddComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [MemberAddComponent]
+      declarations: [MemberAddComponent, FaIconComponent]
     })
       .compileComponents();
   }));

@@ -1,5 +1,6 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {MemberListComponent} from './member-list.component';
+import {FaIconComponent} from '@fortawesome/angular-fontawesome';
 
 describe('MemberListComponent', () => {
   let component: MemberListComponent;
@@ -7,7 +8,7 @@ describe('MemberListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [MemberListComponent]
+      declarations: [MemberListComponent, FaIconComponent]
     })
       .compileComponents();
   }));

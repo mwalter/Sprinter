@@ -1,12 +1,12 @@
 {
   "name": "sprinter",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "build prod": "ng build --prod",
-    "test local": "ng test --browsers=Chrome",
+    "test-local": "ng test --browsers=Chrome",
     "test": "ng test --browsers=ChromeHeadlessNoSandbox --watch=false",
     "lint": "ng lint",
     "e2e": "ng e2e"
