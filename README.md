@@ -2,7 +2,7 @@
 
 ![Node.js CI](https://github.com/mwalter/Sprinter/workflows/Node.js%20CI/badge.svg)
 
-Sprinter is a tool to help agile teams calculating their availability.
+Sprinter is an Angular application to calculate the total availability of agile teams.
 
 ## Prerequisites
 
@@ -30,13 +30,13 @@ The calculated availability is shown in the blue area on the right. There are th
 * The ratio between the first two values.
 
 You can remove team members from the list by clicking the Remove button next to a team member.<br/>
-To reset the form you have to click the Reset button.
+To clear everything you have to click the Reset button.
 
 A live demo of Sprinter can be found [here](https://sprinter.newinstance.ch/).
 
 ## Technology
 
-The app is based on [Angular](http://angular.io) and [Bootstrap](https://getbootstrap.com/) UI components.
+The app is based on [Angular](http://angular.io), [Bootstrap](https://getbootstrap.com/) UI components and [Fontawesome](https://fontawesome.com) icons.
 
 ## Contributing
 

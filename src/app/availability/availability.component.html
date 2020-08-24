@@ -5,3 +5,8 @@
     <h3 *ngIf="members.size > 0">{{ teamAvailability.toPrecision(3) }} / {{ workingDaysInSprint }} ({{ ratio | percent:'1.1-2'}})</h3>
   </div>
 </div>
+<div class="mt-2" *ngIf="members.size > 0">
+  <button type="button" class="btn btn-secondary btn-block" (click)="resetAll()" aria-label="Reset">
+    <fa-icon [icon]="faTrashAlt"></fa-icon>
+  </button>
+</div>

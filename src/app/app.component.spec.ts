@@ -1,5 +1,10 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {AppComponent} from './app.component';
+import {AvailabilityComponent} from './availability/availability.component'; 
+import {MemberAddComponent} from './member-add/member-add.component';
+import {MemberListComponent} from './member-list/member-list.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 
 describe('AppComponent', () => {
   let component: AppComponent;
@@ -8,8 +13,9 @@ describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        AppComponent
+        AppComponent, AvailabilityComponent, MemberAddComponent, MemberListComponent
       ],
+      imports: [FormsModule, ReactiveFormsModule, FontAwesomeModule]
     }).compileComponents();
   }));
 
