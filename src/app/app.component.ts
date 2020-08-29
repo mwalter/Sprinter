@@ -3,6 +3,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {environment} from '../environments/environment';
 import {v4 as uuid} from 'uuid';
 import {MemberAddComponent} from './member-add/member-add.component';
+import {CalculationService} from './service/calculation.service';
 
 @Component({
   selector: 'app-root',
@@ -28,6 +29,9 @@ export class AppComponent implements OnInit {
   teamAvailability = 0;
   workingDaysInSprint = 0;
   ratio = 0;
+
+  constructor(private calculationService: CalculationService) {
+  }
 
   ngOnInit(): void {
     this.setupValidation();
@@ -56,24 +60,11 @@ export class AppComponent implements OnInit {
   }
 
   calculate(): void {
-    let result = 0.0;
-    for (const availability of this.members.values()) {
-      result += availability;
-    }
-
-    const spareTime = this.form.controls.spareTime.value;
-    if (spareTime > 0) {
-      result = result * (1.0 - (spareTime / 100));
-    }
-
-    this.teamAvailability = result;
-
-    const workingDays = this.sprintLength * 5; // working 5 days a week
-    const holidays = this.form.controls.holidays.value;
-    const totalWorkingDays = (workingDays - holidays) * this.members.size;
-
-    this.workingDaysInSprint = totalWorkingDays;
-    this.ratio = this.teamAvailability / totalWorkingDays;
+    const result = this.calculationService.calculate(this.members, this.form.controls.spareTime.value,
+      this.sprintLength, this.form.controls.holidays.value);
+    this.teamAvailability = result.teamAvailability;
+    this.workingDaysInSprint = result.workingDaysInSprint;
+    this.ratio = result.ratio;
   }
 
   resetSprint(): void {
