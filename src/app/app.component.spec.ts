@@ -1,6 +1,6 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {AppComponent} from './app.component';
-import {AvailabilityComponent} from './availability/availability.component'; 
+import {AvailabilityComponent} from './availability/availability.component';
 import {MemberAddComponent} from './member-add/member-add.component';
 import {MemberListComponent} from './member-list/member-list.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
