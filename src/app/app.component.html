@@ -37,7 +37,7 @@
               </div>
               <div class="col-6">
                 <div class="input-group">
-                  <input type="number" class="form-control" id="holidays" formControlName="holidays" (change)="calculate()">
+                  <input type="number" class="form-control" id="holidays" formControlName="holidays" (change)="calculate()" [readOnly]="members.size > 0">
                 </div>
                 <div *ngIf="holidays.invalid && (holidays.dirty || holidays.touched)" class="alert alert-danger">
                   <div *ngIf="holidays.errors.required">Value is required.</div>
