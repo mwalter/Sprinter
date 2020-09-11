@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
 
   form: FormGroup;
 
-  sprintLength = 2; // weeks
+  sprintDuration = 2; // weeks
 
   members = new Map<string, number>();
 
@@ -48,7 +48,7 @@ export class AppComponent implements OnInit {
   }
 
   resetValidatorsAndCalculate() {
-    this.max = this.sprintLength * 5;
+    this.max = this.sprintDuration * 5;
 
     this.form.controls.holidays.setValidators([
       Validators.required,
@@ -61,7 +61,7 @@ export class AppComponent implements OnInit {
 
   calculate(): void {
     const result = this.calculationService.calculate(this.members, this.form.controls.spareTime.value,
-      this.sprintLength, this.form.controls.holidays.value);
+      this.sprintDuration, this.form.controls.holidays.value);
     this.teamAvailability = result.teamAvailability;
     this.workingDaysInSprint = result.workingDaysInSprint;
     this.ratio = result.ratio;
@@ -69,7 +69,7 @@ export class AppComponent implements OnInit {
 
   resetSprint(): void {
     this.memberAddComponent.resetForm();
-    this.sprintLength = 2;
+    this.sprintDuration = 2;
     this.form.controls.spareTime.setValue(0);
     this.form.controls.holidays.setValue(0);
     this.members.clear();
@@ -85,7 +85,7 @@ export class AppComponent implements OnInit {
   }
 
   private setupValidation(): void {
-    this.max = this.sprintLength * 5;
+    this.max = this.sprintDuration * 5;
 
     this.form = new FormGroup({
       spareTime: new FormControl(0, [
