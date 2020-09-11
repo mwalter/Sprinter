@@ -19,13 +19,13 @@
 
           <div class="form-row">
             <div class="col-4">
-              <label for="sprintLength">Sprint Length [weeks]</label>
+              <label for="sprintDuration">Sprint Duration [weeks]</label>
             </div>
             <div class="col-1">
-              <input type="number" class="form-control" id="sprintLength" [(ngModel)]="sprintLength" disabled>
+              <input type="number" class="form-control" id="sprintDuration" [(ngModel)]="sprintDuration" disabled>
             </div>
             <div class="col-5">
-              <input type="range" class="custom-range" min="1" max="5" [(ngModel)]="sprintLength" (change)="resetValidatorsAndCalculate()">
+              <input type="range" class="custom-range" min="1" max="5" [(ngModel)]="sprintDuration" (change)="resetValidatorsAndCalculate()">
             </div>
           </div>
 
@@ -37,12 +37,12 @@
               </div>
               <div class="col-6">
                 <div class="input-group">
-                  <input type="number" class="form-control" id="holidays" formControlName="holidays" (change)="calculate()">
+                  <input type="number" class="form-control" id="holidays" formControlName="holidays" (change)="calculate()" [readOnly]="members.size > 0">
                 </div>
                 <div *ngIf="holidays.invalid && (holidays.dirty || holidays.touched)" class="alert alert-danger">
                   <div *ngIf="holidays.errors.required">Value is required.</div>
                   <div *ngIf="holidays.errors.min">Minimum is 0.</div>
-                  <div *ngIf="holidays.errors.max">Maximum is {{ sprintLength * 5 }}.</div>
+                  <div *ngIf="holidays.errors.max">Maximum is {{ sprintDuration * 5 }}.</div>
                 </div>
               </div>
             </div>
@@ -71,7 +71,7 @@
             </div>
           </form>
 
-          <app-member-add [sprintLength]="sprintLength" [holidays]="holidays.value" (add)="addMember($event)"></app-member-add>
+          <app-member-add [sprintLength]="sprintDuration" [holidays]="holidays.value" (add)="addMember($event)"></app-member-add>
 
           <app-member-list [members]="members" (remove)="removeMember($event)"></app-member-list>
 
