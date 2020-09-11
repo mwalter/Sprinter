@@ -1,6 +1,6 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {AppComponent} from './app.component';
-import {AvailabilityComponent} from './availability/availability.component'; 
+import {AvailabilityComponent} from './availability/availability.component';
 import {MemberAddComponent} from './member-add/member-add.component';
 import {MemberListComponent} from './member-list/member-list.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -62,17 +62,17 @@ describe('AppComponent', () => {
   });
 
   it('should reset all fields when method resetSprint() is called', () => {
-    component.sprintLength = 4;
+    component.sprintDuration = 4;
     component.spareTime.setValue(15);
     component.holidays.setValue(2);
     component.addMember(8);
-    expect(component.sprintLength).toBe(4);
+    expect(component.sprintDuration).toBe(4);
     expect(component.spareTime.value).toBe(15);
     expect(component.holidays.value).toBe(2);
     expect(component.members.size).toBe(1);
 
     component.resetSprint();
-    expect(component.sprintLength).toBe(2);
+    expect(component.sprintDuration).toBe(2);
     expect(component.spareTime.value).toBe(0);
     expect(component.holidays.value).toBe(0);
     expect(component.members.size).toBe(0);
