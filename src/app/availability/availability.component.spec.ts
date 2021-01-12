@@ -1,4 +1,4 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 import {AvailabilityComponent} from './availability.component';
 import {FaIconComponent} from '@fortawesome/angular-fontawesome';
 
@@ -6,7 +6,7 @@ describe('AvailabilityComponent', () => {
   let component: AvailabilityComponent;
   let fixture: ComponentFixture<AvailabilityComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [AvailabilityComponent, FaIconComponent],
     })
